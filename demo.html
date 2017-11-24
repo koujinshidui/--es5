@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<input type="text" placeholder="用户" id="input1">
+<input type="password" placeholder="密码" id="input2">
+<input type="email" placeholder="邮件" id="input3">
+<input type="text" placeholder="手机号码" id="input4">
+<input type="submit" value="提交" id="input5">
+
+
+<div id="span1" style="width:300px;height:30px;border:1px solid black; text-align: center;text-indent: 2px;">用户</div>
+<div id="span2" style="width:300px;height:30px;border:1px solid black; text-align: center;text-indent: 2px;">密码</div>
+<div id="span3" style="width:300px;height:30px;border:1px solid black; text-align: center;text-indent: 2px;">邮件</div>
+<div id="span4" style="width:300px;height:30px;border:1px solid black; text-align: center;text-indent: 2px;">手机号码</div>
+
+
+
+<div id="span5" style="width:300px;height:30px;border:1px solid black; text-align: center;text-indent: 2px;">点击换表单校检规则</div>
+
+<body>
+
+
+
+</body>
+</html>
+<script src='Validator.js'></script>
+<script>
+
+    function id(id){
+        return document.getElementById(id);
+    }
+    var a="input1",b="input2",c="input3",d="input4";
+
+    var  Validator= new Validator();
+
+
+
+    Validator.add({
+        a:{
+            "dom":{
+                "valueDom" : id(a),
+                "errorMessageDom": id("span1"),
+            },
+            "rule1":{
+                "rule":
+                {
+                    "rule":"isNoequal",
+                    "detection":3,
+                    "returnMessage":"输入的值不能等于3"
+                },
+            },
+            "rule2":{
+                "rule":{
+                    "rule":"minLength",
+                    "detection":3,
+                    "returnMessage":"输入的值不能少于3"
+                }
+            },
+            "rule3":{
+                "rule":function (){
+                    console.log(0);
+
+                }
+            }
+
+        },
+        b:{
+            "dom":{
+                "valueDom" : id(b),
+                "errorMessageDom": id("span2"),
+                "returnMessage" :" sadad asdsa",
+            },
+            rule:{
+                "rule":"passWord"
+            }
+        },
+        c:{
+            "dom":{
+                "valueDom" : id(c),
+                "errorMessageDom": id("span3"),
+            },
+            rule:{
+                "rule":"mail"
+            }
+        },
+        d:{
+            "dom":{
+                "valueDom" : id(d),
+                "errorMessageDom": id("span4"),
+            },
+            rule:{
+                "rule":"isMobile"
+            }
+        },
+    } )
+
+    id("input5").onclick=function(){
+        console.log(Validator.all());
+    }
+    Validator.one(["a","b","c"]);
+    Validator.cm(["a","b",'c']);
+
+    id("span5").onclick=function(){
+
+        Validator.add({
+            a:{
+                "dom":{
+                    "valueDom" : id(a),
+                    "errorMessageDom": id("span1"),
+                },
+                "rule1":{
+                    "rule":
+                    {
+                        "rule":"isNoequal",
+                        "detection":0,
+                        "returnMessage":"输入的值不能等于3"
+                    },
+                },
+                "rule2":{
+                    "rule":{
+                        "rule":"minLength",
+                        "detection":7,
+                        "returnMessage":"输入的值不能少于3"
+                    }
+                },
+                "rule3":{
+                    "rule":function (){
+                        var i=0;
+                        setTimeout( function(i){ console.log(i++); if(1==3){ console.log("我到3了") }} , 3000);
+                        return true;
+
+                    }
+                }
+
+            },
+            b:{
+                "dom":{
+                    "valueDom" : id(b),
+                    "errorMessageDom": id("span2"),
+                    "returnMessage" :" sadad asdsa",
+                },
+                rule:{
+                    "rule":"passWord"
+                }
+            },
+            c:{
+                "dom":{
+                    "valueDom" : id(c),
+                    "errorMessageDom": id("span3"),
+                },
+                rule:{
+                    "rule":"mail"
+                }
+            },
+            d:{
+                "dom":{
+                    "valueDom" : id(d),
+                    "errorMessageDom": id("span4"),
+                },
+                rule:{
+                    "rule":"isMobile"
+                }
+            },
+        } )
+        Validator.one(["a","b","c"]);
+        Validator.cm(["a","b",'c']);
+    }
+
+</script>
