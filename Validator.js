@@ -8,6 +8,7 @@ var Validator = (function(window) {
         }
         return '校检通过';
     }
+    
     Validator.prototype.clearCache=function(){
         for(var i=0,length;length=["detection","objDom","rule","ruleName"][i++];){this[length]=null; }
     }
